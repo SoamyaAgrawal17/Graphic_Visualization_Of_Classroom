@@ -1,0 +1,235 @@
+<html>
+	<head>
+		<title></title>
+	</head>
+	
+	<body>
+		<h1 style="text-align: center;">
+			<span style="font-size:28px;">Computer Graphics</span></h1>
+		<h2 style="text-align: center;">
+			<span style="font-size:24px;">Assignment - 2</span></h2>
+		<p style="text-align: center;">
+			<span style="font-size:20px;">R Vidya (2014AAPS212H), Soamya Agrawal (2014A7PS185H), GVS Ravi Teja (2014A7PS196H)</span></p>
+		<p style="text-align: center;">
+			&nbsp;</p>
+			
+			
+			
+			
+		<h4 style="margin-left: 40px;">
+			<span style="font-size:24px;">Table of Contents</span></h4>
+		<ol>
+			<li>
+				<a href="#Introduction"><span style="font-size:18px;">Introduction</span></a></li>
+				<ol>
+					<li>
+						<span style="font-size: 18px;"><a href="#GLUTFunctions">Predefined GLUT Functions Used</a></span></li>
+					<li>
+						<a href="#Use"><span style="font-size: 18px;">How to use</span></a></li>
+				</ol>
+			<li>
+				<a href="#Implementation"><span style="font-size: 18px;">Implementation</span></a>
+				<ul>
+					<li>
+						<span style="font-size: 18px;"><a href="#Benches">Benches</a></span></li>
+					<li>
+						<a href="#Lights"><span style="font-size: 18px;">Lights</span></a></li>
+					<li>
+						<a href="#Walls"><span style="font-size: 18px;">Walls</span></a></li>
+					<li>
+						<a href="#Windows"><span style="font-size: 18px;">Windows</span></a></li>
+					<li>
+						<a href="#Greenboard"><span style="font-size: 18px;">Greenboard</span></a></li>
+					<li>
+						<a href="#Projector"><span style="font-size: 18px;">Projector</span></a></li>
+					<li>
+						<a href="#Platform"><span style="font-size: 18px;">Platform</span></a></li>
+					<li>
+						<a href="#Door"><span style="font-size: 18px;">Door</span></a></li>
+					<li>
+						<a href="#Floor"><span style="font-size: 18px;">Floor</span></a></li>
+					<li>
+						<a href="#ProjectorScreen"><span style="font-size: 18px;">Projector Screen</span></a></li>
+						<li>
+						<a href="#Table"><span style="font-size: 18px;">Table</span></a></li>
+						<li>
+						<a href="#Keyboard"><span style="font-size: 18px;">Keyboard</span></a></li>
+						
+				</ul>
+			</li>
+			<li>
+				<span style="font-size: 18px;"><a href="#Results">Results</a></span></li>
+		</ol>
+		<p>
+			&nbsp;</p>
+		<h4 style="margin-left: 40px;">
+			<a name="Introduction"><span style="font-size:24px;">1. Introduction</span></a></h4>
+		<p style="margin-left: 40px;">
+			<span style="font-size:18px;">
+			This assignment implements  graphical visualization using a three dimensional scene, in this case, a classroom. The program uses the openGL library and a heavy usage of the matrix stack feature. The process flow is divided into 4 steps:</br>
+			1. Create Primitives such as walls, tables, chairs etc.</br>
+			2. Position the primitives in the world co-ordinate space.</br>
+			3. Setup the camera position, view volume and up direction.</br>
+			4. Capture the elements in the view volume and scale.
+           <br/></br>
+           
+                        The scene contains:</br>
+                        20 Benches</br>
+                        9  Lights</br>
+                        4  Walls</br>
+                        2 Windows</br>
+                        1 Greenboard</br>                        
+                        1 Projector</br>
+                        1 Platform</br>                        
+                        1 Door</br>                        
+                        1 Floor</br>
+                        1 Projector Screen</br>
+                        1 Table</br>
+                        1 Keyboard</br>
+           
+           <h3 style="margin-left: 40px;">
+			<a name="GLUTFunctions"><span style="font-size:22px;">1.1. Predefined GLUT Functions Used</span></a></h3>
+			<p style="margin-left: 40px;margin-left: 60px;">
+			<span style="font-size:18px;">
+            1. glutSolidCube() </br>
+           
+            2. glPushMatrix()</br>
+           
+            3. glPopMatrix() </br>
+           
+            4. glutSolidSphere() </br>
+           
+            5. glTranslatef() </br>
+            
+            6. glScalef() </br>
+           
+            7. glutRotatef() </br>
+           
+            8. glColor3f()</br>
+            
+            9. glVertex3d()</br>
+           
+            10. glBegin(GL_QUADS) and glEnd() </br>
+           
+            11. gluLookAt()
+           </br>
+            
+            
+            
+            
+			</span></p>
+			</p>
+           
+           <h3 style="margin-left: 40px;">
+			<a name="Use"><span style="font-size:22px;">1.2. How to use</span></a></h3>
+			<p style="margin-left: 40px;margin-left: 60px;">
+			<span style="font-size:18px;">
+			The key-bindings along with their application are as shown below:</p>
+			<ul style="margin-left: 60px;">
+				
+				<li>
+					<span style="font-size:18px;"><strong>Mouse Scroll </strong> used to walk forward and backward respectively.</span></li>
+					<li>
+					<span style="font-size:18px;"><strong>Right arrow key</strong> to increase rotation by 5 degree in y direction. </span></li>
+					<li>
+					<span style="font-size:18px;"><strong>Left arrow key</strong> to decrease rotation by 5 degree in y direction. </span></li>
+					<li>
+					<span style="font-size:18px;"><strong>Up arrow key</strong> to increase rotation by 5 degree in x direction.</span></li>
+					<li>
+					<span style="font-size:18px;"><strong>Down arrow key</strong> to decrease rotation by 5 degree in x direction.</span></li>
+					
+				<li>
+					<span style="font-size:18px;"><strong>z</strong> to zoom in</span></li>
+					<li>
+					<span style="font-size:18px;"><strong>x</strong> to zoom out</span></li>
+					<li>
+					<span style="font-size:18px;"><strong>a and d</strong> to pan horizontally.</span></li>
+					<li>
+					<span style="font-size:18px;"><strong>s and w</strong> to pan vertically.</span></li>
+					<li>
+					<span style="font-size:18px;"><strong>c</strong> to close the door.</span></li>
+					<li>
+					<span style="font-size:18px;"><strong>o</strong> to open the door.</span></li>
+					<li>
+					<span style="font-size:18px;"><strong>p</strong> to open projector screen.</span></li>
+					<li>
+					<span style="font-size:18px;"><strong>q</strong> to close projector screen.</span></li>
+			</ul>
+			
+		<p>
+			&nbsp;</p>
+		<h4 style="margin-left: 40px;">
+			<span style="font-size:24px;"><a name="Implementation"></a>2. Implementation</span></h4>
+		<p style="margin-left: 40px;">
+			<span style="font-size:18px;">
+			We used the following primitive structures to construct the scene:
+			</span></p>
+			
+			<ul style="margin-left: 60px;">
+				<li>
+					<span style="font-size:18px;"><a name="Benches"></a><strong>Benches:</strong> 
+						Benches are made using draw_tablechair(). Benches are made in parts by making table's top , front , side and bottom  and chair is made by making chair's seat and its side walls .All this are made by using predefined glutfunctions like glTranslatef(),glScalef(),glutSolidCube(). 
+					</span>
+				</li>
+				<li>
+					<span style="font-size:18px;"><a name="Lights"></a><strong>Lights:</strong> To draw all the 9 lights , draw_lights() function is used. Light is drawn by using predefined functions such as glTranslatef() to set the exact location of light on ceiling and glScalef() to set the size of light and basic glutSolidCube() on which all the changes are made . After drawing one light , the rest lights are drawn by using the same code , just changing the basic x and z positions.</span></li>
+				
+				<li>
+					<span style="font-size:18px;"><a name="Walls"></a><strong>Walls:</strong> All the four walls are aligned properly by using predefined functions like glTranslatef(),glScalef(),glutSolidCube() in draw_walls() function.
+					</span>
+				</li>
+				<li>
+					<span style="font-size:18px;"><a name="Windows"></a><strong>Windows:</strong> 2 windows are built using draw_windows() functions by using predefined functions like glTranslatef(),glSolidCube() and glScalef() .4 window boundaries are drawn and to give window's opening and closing effect, 2 more verical rods are made in between.		</span>
+				</li>
+				<li>
+					<span style="font-size:18px;"><a name="Greenboard"></a><strong>Greenboard:</strong> Greenboard is drawn using our function draw_blackboard() which uses predefined functions like glTranslatef() , glScalef() and glutSolidCube() and to color the greenboard green glColor3f() function is given proper rgb values.
+					</span>
+				</li>				
+				<li>
+					<span style="font-size:18px;"><a name="Projector"></a><strong>Projector: </strong>
+						Projector is drawn using our defined function draw_projector(). This function builds rod of the projector by using predefined functions and base of the projector using predefined functions like glTranslatef() , glScalef() and glSolidCube() to achieve the location and shape.
+					</span>
+				</li>
+				<li>
+					<span style="font-size:18px;"><a name="Platform"></a><strong>Platform: </strong>
+							Platform is drawn using our defined function draw_draw_platform() which uses glTranslatef() function to set the exact location of the platform and glScalef() function to set it's size as in elevation of the platform and all this basic changes are made on the cube drawn using glutSolidCube() function.
+					</span>
+				</li>
+				<li>
+					<span style="font-size:18px;"><a name="Door"></a><strong>Door: </strong>
+							Door is drawn using our defined function draw_door() which uses GL_QUADS. To give door the opening and closing look, the four coordinates of the door are set accordingly and to make the border of the door, basic predefined functions like glTranslatef() , glScalef() and glutSolidCube() functions are used and to draw the knob of the door ,glutSolidSphere() along with glTranslatef() functions are used.
+					</span>
+				</li>
+				<li>
+					<span style="font-size:18px;"><a name="Floor"></a><strong>Floor: </strong>
+						Floor is drawn using our defined function draw_floor(). This function uses predefined glut functions like glTranslatef(),glScalef()and glutSolidCube().
+					</span>
+				</li>
+				<li>
+					<span style="font-size:18px;"><a name="ProjectorScreen"></a><strong>ProjectorScreen: </strong>
+						Projector Screen is drawn using our defined function draw_projector(). This function builds up the projector screen in parts by buildind white projector screen and rods attached to it along with hanger and a ring .All this functionalities are achieved by using predefined GLUT functions like glTranslatef(),glScalef(),glutSolidCube() and to make the ring glutSolidSphere() is used.
+					</span></li>
+					<li>
+					<span style="font-size:18px;"><a name="Table"></a><strong>Table: </strong>
+						Table is drawn using our-defined draw_table() function. This function builds up the table in parts such as making of top of the table ,left leg ,right leg,partitions,side, front of the table and all this is achieved using predefined glut functions like glTranslatef(),glScalef(),glSolidCube(),glColor3f(). 
+					</span></li>
+					<li>
+					<span style="font-size:18px;"><a name="Keyboard"></a><strong>Keyboard: </strong>
+						Keyboard is drawn using our-defined draw_keyboard() function. The function uses predefined functions glColor3f() , glTranslatef() , glScalef()  and  glutSolidCube() to achieve black color of keyboard and it's position on the table.
+					</span></li>
+			</ul>	
+			
+		<p>
+			&nbsp;</p>
+		<h4 style="margin-left: 40px;">
+			<b><a name="Results"><span style="font-size:24px;">3. Results</span></a></b></h4>
+		<p>1.Front View</br><img src="FrontView.png" /></p></br>
+		<p>2.Right Side View</br><img src="SideBack.png" /></p></br>
+		<p>3.Zoomed In View</br><img src="SideFront.png" /></p></br>
+		<p>4.Left Side View</br><img src="SideUpperView.png" /></p></br>
+		<p>5.Front View</br><img src="CGView.png" /></p></br>
+		
+		
+	</body>
+</html>
+
