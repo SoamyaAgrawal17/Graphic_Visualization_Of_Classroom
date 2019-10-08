@@ -9,4 +9,6 @@ sudo apt install freeglut3-dev
 
 ### Mac
 Open terminal and run the following 
+```sh
 brew install freeglut
+```
