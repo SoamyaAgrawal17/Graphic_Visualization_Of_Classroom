@@ -6,6 +6,11 @@ Open terminal and run the following
 ```sh
 sudo apt install freeglut3-dev
 ```
+To run the code
+```sh
+g++ ./cg_classroom.cpp -o classroom -lGL -lGLU -lglut
+./classroom
+```
 
 ### Mac
 Open terminal and run the following 
