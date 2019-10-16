@@ -8,6 +8,7 @@ sudo apt install freeglut3-dev
 ```
 To run the code
 ```sh
+cd Code
 g++ ./cg_classroom.cpp -o classroom -lGL -lGLU -lglut
 ./classroom
 ```
@@ -15,5 +16,6 @@ g++ ./cg_classroom.cpp -o classroom -lGL -lGLU -lglut
 ### Mac
 Open terminal and run the following 
 ```sh
+cd Code
 gcc cg_classroom.cpp -o classroom -framework OpenGL  -framework GLUT
 ```
